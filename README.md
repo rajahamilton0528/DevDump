@@ -22,7 +22,7 @@ This depends on `gpg`. Install it on OS X with `brew install gpg`.
 
 ## Configuration
 
-Configuration can be provided with a Rails initializer as a configuration file, following [this approach](http://robots.thoughtbot.com/mygem-configure-block).
+Add `config/initializers/dev_dump.rb` overriding any of the values below.
 
     DevDump.configure do |config|
       config.backups_path = "/tmp/some_dir"
