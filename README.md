@@ -34,5 +34,5 @@ Run this task on the local machine. This was tested in a bash shell.
 
 Run this task on the local machine after the file is downloaded, using the same path. You will be prompted for the passphrase you entered above.
 
-    rake dev_dump:load[/path/to/local/file] # run after the dump file is downloaded
+    rake dev_dump:load[/path/to/local/file]
 
