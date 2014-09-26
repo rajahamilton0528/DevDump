@@ -1,6 +1,7 @@
 require "yaml"
 require "erb"
 require "dev_dump"
+include DevDump
 
 namespace :dev_dump do
   desc "dump the database to a zipped file"
@@ -27,8 +28,9 @@ namespace :dev_dump do
   desc "download dump file"
   task :download_file, [:remote_path] do |t, args|
     if args && args[:remote_path]
-      puts "downloading file #{args[:remote_path]}"
-      `scp #{DevDump.configuration.ssh_user}@#{DevDump.configuration.ssh_host}:#{args[:remote_path]} #{args[:remote_path]}`
+      command = "scp #{DevDump.configuration.ssh_user}@#{DevDump.configuration.ssh_host}:#{args[:remote_path]} #{args[:remote_path]}"
+      puts "downloading file with command: #{command}"
+      `#{command}`
       puts "done."
     end
   end

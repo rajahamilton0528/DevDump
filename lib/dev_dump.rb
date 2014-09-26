@@ -1,4 +1,5 @@
 require "dev_dump/version"
+require "dev_dump/railtie" if defined?(Rails)
 
 module DevDump
   class << self
@@ -11,7 +12,7 @@ module DevDump
   end
 
   class Configuration
-    attr_accessor :backups_path, :ssh_user, :ssh_host
+    attr_accessor :rails_db_config, :backups_path, :ssh_user, :ssh_host
 
     def initialize
       self.rails_db_config = YAML.load_file(File.join(Dir.getwd, 'config', 'database.yml'))[Rails.env]
