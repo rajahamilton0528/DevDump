@@ -1,10 +1,8 @@
 # DevDump
 
-Provides Rake tasks to dump a database to an encrypted file on a remote server, download the file, and restore a local DB from the file.
+Provides Rake tasks to dump and restore a PostgreSQL database via an encrypted file, for Ruby on Rails applications.
 
 ## Installation
-
-Add this line to your application's Gemfile:
 
     gem 'dev_dump'
 
@@ -12,13 +10,7 @@ And then execute:
 
     $ bundle
 
-This depends on `gpg`. Install it on OS X with `brew install gpg`.
-
-## Usage
-
-    rake dev_dump:dump # run from the app root on production. dump postgres DB to a file. supply a passphrase for gpg encryption.
-    rake dev_dump:download_file[/path/to/file/on/prod] # run from developer machine, with a file path in mind
-    rake dev_dump:load[/path/to/local/file] # run after the dump file is downloaded
+This depends on `gpg`, `gunzip` and Ruby on Rails. Install `gpg` on OS X with `brew install gpg`.
 
 ## Configuration
 
@@ -29,3 +21,18 @@ Add `config/initializers/dev_dump.rb` overriding any of the values below.
       config.ssh_user = "user"
       config.ssh_host = "host.server.com"
     end
+
+## Tasks
+
+Run this task from the app root on production. This dumps the database to an encrypted file. You will be prompted for a passphrase used for gpg encryption.
+
+    rake dev_dump:dump
+
+Run this task on the local machine. This was tested in a bash shell.
+
+    rake dev_dump:download_file[/path/to/file/on/prod]
+
+Run this task on the local machine after the file is downloaded, using the same path. You will be prompted for the passphrase you entered above.
+
+    rake dev_dump:load[/path/to/local/file] # run after the dump file is downloaded
+
