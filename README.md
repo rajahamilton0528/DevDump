@@ -2,9 +2,9 @@
 
 Provides Rake tasks to dump and restore a PostgreSQL database via an encrypted file, for Ruby on Rails applications.
 
-A good use case for this is when an application is new, and it is appropriate to dump an entire database from production, for use locally in development, to keep 1 or more developers on the same page. As an application grows, it may longer be feasible or secure to dump the entire database.
+A good use case for this is when an application is new, and it is appropriate to dump an entire database from production, for use locally in development, to keep 1 or more developers on the same page. As an application grows, it may no longer be feasible or secure to dump the entire database.
 
-Another use case would be if there was a prebuilt, pre-sanitized, subset database created, then in that case, the entire database may be useful for application developers to dump and load directly.
+Another use case would be if there was a pre-built, pre-sanitized, subset of the production database created, then in that case the entire database may be dumped and loaded directly for local application development purposes.
 
 ## Installation
 
